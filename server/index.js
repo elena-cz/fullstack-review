@@ -1,5 +1,10 @@
 const express = require('express');
 let app = express();
+const githubHelper = require('../helpers/github.js');
+const dbConnect = require('../database/index.js');
+
+
+console.log('/server/index.js was run');
 
 app.use(express.static(__dirname + '/../client/dist'));
 
@@ -8,6 +13,14 @@ app.post('/repos', function (req, res) {
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // save the repo information in the database
+
+
+  // Get username from request
+  var username;
+
+  // Send GET request to GitHub API 
+  githubHelper.getReposByUsername(username);
+
 });
 
 app.get('/repos', function (req, res) {
