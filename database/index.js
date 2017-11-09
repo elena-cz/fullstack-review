@@ -54,17 +54,17 @@ let save = (repos) => {
 
   
   // Does not save if github_id already exists in DB
-  Repo.on('index', function(err) { // <-- Wait for model's indexes to finish
-    if (err) {
-      throw err;
-    }
+  // Repo.on('index', function(err) { // <-- Wait for model's indexes to finish
+  //   if (err) {
+  //     throw err;
+  //   }
     Repo.create(repos, function(err) {
        if (err) {
         console.log(err);
       }
       console.log('repo created in DB');
     });
-  });
+  // });
 
 
 

@@ -1,7 +1,7 @@
 const express = require('express');
 let app = express();
 const githubHelper = require('../helpers/github.js');
-const dbConnect = require('../database/index.js');
+const db = require('../database/index.js');
 const Promise = require('bluebird');
 
 
@@ -24,7 +24,7 @@ app.post('/repos', function (req, res) {
 
   return githubHelper.getReposByUsername(username)
   .then((repos) => {
-    console.log('repos got to server:', repos);
+    db.save(repos);
   });
 
 });
