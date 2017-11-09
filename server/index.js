@@ -2,6 +2,7 @@ const express = require('express');
 let app = express();
 const githubHelper = require('../helpers/github.js');
 const dbConnect = require('../database/index.js');
+const Promise = require('bluebird');
 
 
 
@@ -20,7 +21,11 @@ app.post('/repos', function (req, res) {
   var username = req.query.term;
 
   // Send GET request to GitHub API 
-  githubHelper.getReposByUsername(username);
+
+  return githubHelper.getReposByUsername(username)
+  .then((repos) => {
+    console.log('repos got to server:', repos);
+  });
 
 });
 
@@ -34,4 +39,7 @@ let port = 1128;
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
+
+
+
 

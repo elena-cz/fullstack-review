@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/fetcher');
-var Promise = require("bluebird");
+const Promise = require("bluebird");
 
 console.log('/database/index.js was run');
 
