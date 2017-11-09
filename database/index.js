@@ -66,10 +66,24 @@ let save = (repos) => {
     });
   // });
 
+};
 
+
+let getTop25 = () => {
+  
+  return new Promise(function(resolve, reject) {
+    Repo.
+      find().
+      limit(25).
+      sort('-watchers').
+      exec((err, data) => {
+        resolve(data);
+      });
+  })
 
 };
 
 
 
 module.exports.save = save;
+module.exports.getTop25 = getTop25;

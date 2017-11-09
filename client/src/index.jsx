@@ -13,6 +13,24 @@ class App extends React.Component {
 
   }
 
+  componentDidMount () {
+    this.getTopRepos();
+  }
+
+  getTopRepos () {
+
+     $.ajax({
+      type: "GET",
+      url: '/repos',
+      contentType: 'application/json',
+      success: (results) => { 
+        console.log('Getting response in client', results);
+        this.setState({repos: results});
+      }
+    });
+
+  }
+
   search (term) {
     console.log(`${term} was searched`);
     $.ajax({
