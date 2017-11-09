@@ -15,13 +15,12 @@ app.post('/repos', function (req, res) {
   // and get the repo information from the github API, then
   // save the repo information in the database
   
-  console.log('req.query.term', req.query.term);
-
   var username = req.query.term;
 
   return githubHelper.getReposByUsername(username)
   .then((repos) => {
     db.save(repos);
+    res.send();
   });
 
 });
