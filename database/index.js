@@ -28,8 +28,8 @@ var exampleRepo4 = {
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log('MongoDB connected!')
-  save([exampleRepo3, exampleRepo4]);
+  console.log('Connected to MongoDB');
+  // save([exampleRepo3, exampleRepo4]);
 });
 
 
@@ -52,7 +52,6 @@ let save = (repos) => {
   // the MongoDB
   // repos is an array of repo objects
 
-  console.log('save function ran');
   
   // Does not save if github_id already exists in DB
   Repo.on('index', function(err) { // <-- Wait for model's indexes to finish
