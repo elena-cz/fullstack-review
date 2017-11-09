@@ -38,7 +38,10 @@ class App extends React.Component {
       url: `/repos?term=${term}`,
       data: term,
       contentType: 'text/plain',
-      success: () => { console.log(`${term} sent to /repos`)}
+      success: () => { 
+        console.log(`${term} sent to /repos`);
+        this.getTopRepos();
+      }
     });
 
 

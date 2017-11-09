@@ -12,12 +12,14 @@ let getReposByUsername = (username) => {
   // The options object has been provided to help you out, 
   // but you'll have to fill in the URL
 
+  let gihubToken = process.env.GITHUB_TOKEN || config.TOKEN;
+
 
   let options = {
     url: `https://api.github.com/users/${username}/repos`,
     headers: {
       'User-Agent': 'Request-Promise',
-      'Authorization': `token ${config.TOKEN}`
+      'Authorization': `token ${gihubToken}`
     },
     json: true
   };
